@@ -1,0 +1,63 @@
+
+import React from 'react';
+import { Wifi, Shield, Car, Coffee, Tv, Wind, Waves, Pocket as Rocket } from 'lucide-react';
+
+const Amenities: React.FC = () => {
+  const features = [
+    { title: 'Fiber Optic Wi-Fi', icon: <Wifi />, desc: 'High-speed internet throughout the premises for business or streaming.' },
+    { title: '24-Hour Security', icon: <Shield />, desc: 'Professional security personnel and CCTV surveillance for your peace of mind.' },
+    { title: 'Spacious Parking', icon: <Car />, desc: 'Safe and secure on-site parking for all our guests at no extra cost.' },
+    { title: 'Complimentary Breakfast', icon: <Coffee />, desc: 'Start your day right with a delicious variety of local and continental options.' },
+    { title: 'Smart Entertainment', icon: <Tv />, desc: 'Every room is equipped with flat-screen smart TVs and satellite channels.' },
+    { title: 'Full Air Conditioning', icon: <Wind />, desc: 'Individually controlled AC units to keep you cool in the Ilorin heat.' },
+    { title: 'Laundry Services', icon: <Rocket />, desc: 'Professional cleaning and pressing services to keep you looking sharp.' },
+    { title: 'Daily Housekeeping', icon: <Waves />, desc: 'Impeccable hygiene standards with daily cleaning and linen changes.' }
+  ];
+
+  return (
+    <div className="py-16 bg-white animate-in zoom-in-95 duration-500">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-20">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Everything You Need</h1>
+          <p className="text-gray-600 max-w-2xl mx-auto">We provide a wide range of facilities and services designed to make your stay as comfortable and convenient as possible.</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+          {features.map((feature, idx) => (
+            <div key={idx} className="group p-8 rounded-[2rem] bg-gray-50 hover:bg-[#064e3b] transition-all duration-300">
+              <div className="bg-white w-14 h-14 rounded-2xl flex items-center justify-center text-[#064e3b] shadow-sm mb-6 group-hover:bg-[#d4af37] group-hover:scale-110 transition-all">
+                {/* Fixed TypeScript error by casting to React.ReactElement<any> to allow the 'size' property */}
+                {React.cloneElement(feature.icon as React.ReactElement<any>, { size: 28 })}
+              </div>
+              <h3 className="text-xl font-bold mb-3 group-hover:text-white transition-colors">{feature.title}</h3>
+              <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Feature Banner */}
+        <div className="mt-24 relative rounded-[3rem] overflow-hidden bg-gray-900 h-[400px]">
+          <img 
+            src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&q=80&w=1200" 
+            className="w-full h-full object-cover opacity-60" 
+            alt="Lounge"
+          />
+          <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
+            <h2 className="text-white text-4xl font-bold mb-4">Excellence in Every Detail</h2>
+            <p className="text-gray-200 max-w-xl mx-auto mb-8">From our 24/7 reception to our meticulously cleaned rooms, we pride ourselves on delivering a 3-star experience that rivals the best.</p>
+            <div className="flex space-x-4">
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-full text-white text-sm font-bold">
+                Professional Staff
+              </div>
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-full text-white text-sm font-bold">
+                Premium Linen
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Amenities;
